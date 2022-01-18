@@ -1,3 +1,4 @@
+import os
 import time
 
 from pyvirtualdisplay import Display
@@ -11,8 +12,8 @@ chrome_options = Options()
 display = Display(visible=0, size=(800, 600))
 display.start()
 
-Login = '' # Ваш логин
-Password = '' # Ваш пароль
+Login = os.environ['input_login_onliner'] # Ваш логин
+Password = os.environ['input_password'] # Ваш пароль
 
 crontab_chrome_path = '/usr/bin/chromedriver'
 crontab_chrome = '/home/dragunov/Logs/crontab_chrome_onliner.log' # Путь для лога
@@ -37,7 +38,7 @@ time.sleep(5)
 driver.get("https://baraholka.onliner.by/search.php?type=ufleamarket")
 driver.set_page_load_timeout(10)
 
-checkbox = driver.find_element(By.ID, 'select-all-my-adverts')
+checkbox = driver.find_element(By.ID, "select-all-my-adverts")
 checkbox.click()
 time.sleep(5)
 
