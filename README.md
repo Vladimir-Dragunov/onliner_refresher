@@ -1,20 +1,48 @@
-# onliner_refresher
-Скрипт для обновления объявлений на onliner.by
+Скрипт для автоматического обновления объявлений на сайте onliner.by
 
-Работает на Windows / Linux(Ubuntu) / Mac OS
+Работает на Windows / Linux / Mac OS
 
-Для Windows, просто измените путь в переменной:
-
->__service = Service('/usr/bin/chromedriver') на service = Service('C:\Files\chromedriver.exe')__
-
-Библиотеки необходимые для работы скрипта:
-
+Зависимости:
 1. __Selenium__
-2. __PyVirtualDisplay__
-3. __Urllib3__
+2. __Urllib3__
 
-Необходимо указать логин в переменную __Login = 'example@mail.com'__ и пароль __Password = 'qwerty123'__
+Необходимо внести данные в файле конфига config.py:
+1. __input_login_hh__= 'you-login@email.com'
+2. __input_password__= 'you-password'
+3. __crontab_chromedriver_path__ = '/usr/bin/chromedriver' (для Windows 'X:/your-folder/chromedriver.exe')
+4. __crontab_chromedriver_log__ = '/home/username/chromedriver.log' (для Windows 'X:/your-folder/chromedriver.log')
 
-Для того чтобы всё работало автоматически, создайте задачу в cron через команду crontab -e.
+# Планировщики задач
 
-Задайте условие */30 * * * * /usr/bin/python3.8 -u /path/where/locate/script/onliner.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1 и сохраните.
+**LINUX или MAC OS**
+
+Вызовите cron через команду 
+```
+crontab -e
+```
+
+Задайте внизу условие и сохраните
+```
+*/40 * * * * /usr/bin/python3 -u /path/where/locate/script/onliner.py >> /path/where/locate/log/crontab_chromedriver_error.log 2>&1
+```
+
+**WINDOWS**
+
+Для Windows вам понадобится создать bat-файл.
+
+В нём укажите директорию к бинарному файлу python и директорию куда загружен скрипт
+
+```
+C:\you-folder\python.exe C:\you-folder\hh-win.py
+pause
+```
+
+![1](https://i.imgur.com/O5NF5Fa.png)
+![2](https://i.imgur.com/jxcvidK.png)
+![3](https://i.imgur.com/NnLALQV.png)
+![4](https://i.imgur.com/lkPsGKs.png)
+![5](https://i.imgur.com/04ewFOQ.png)
+![6](https://i.imgur.com/6DIiBqd.png)
+![7](https://i.imgur.com/WGE3UrE.png)
+
+__WARNING!__ : Не рекомендую убирать тайминги, т.к. вам подсунут captch-у или просто дропнут.
