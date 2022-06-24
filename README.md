@@ -33,7 +33,7 @@ crontab -e
 В нём укажите директорию к бинарному файлу python и директорию куда загружен скрипт
 
 ```
-C:\you-folder\python.exe C:\you-folder\hh-win.py
+C:\you-folder\python.exe C:\you-folder\onliner.py
 pause
 ```
 
